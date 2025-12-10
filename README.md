@@ -8,7 +8,7 @@ Jeff Raymond, Marten Shears, and Joseph Bettle
 This repository contains the original data and the code needed to reduce the results found in the "NFl-4th-Down-Analysis". Specifically, to run analytics on whether you, as an Offensive Coordinator/Play Caller, should go for it on 4th down. 
 ## Requirements
 **To install the required R packages, run the following code in R:**
-Install the package code
+Install the data through an R package that then needs to be cleaned through the cleaned data cleaning code due to a large number of variables and exhaustive rows. There is no data attached as the data we used was too big to upload here, but going through the step-by-step process shown here, you will get to the same place and code used in the analysis.  
 
 ## Data
 **We used the NFL play-by-play data and cleaned the variables that would perfectly predict the play.**
