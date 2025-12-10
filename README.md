@@ -10,7 +10,7 @@ This repository contains the original data and the code needed to reduce the res
 **To install the required R packages, run the following code in R:**
 Install the data through an R package that then needs to be cleaned through the cleaned data cleaning code due to a large number of variables and exhaustive rows. There is no data attached as the data we used was too big to upload here, but going through the step-by-step process shown here, you will get to the same place and code used in the analysis. The libraries will load the data set into the R workspace. 
 
-**Here are the libraries needed**
+**Here are the libraries needed:**
 library(rpart)
 library(rpart.plot)
 library(tidyverse)
@@ -20,7 +20,7 @@ library(nflfastR)
 
 
 ## Data
-**We used the NFL play-by-play data and cleaned the variables that would perfectly predict the play.**
+We used the NFL play-by-play data and cleaned the variables that would perfectly predict the play.
 There is no data added here, as it will be loaded into the workspace when you load in the libraries. The code provided will clean and subset the data for you to what we used for the analysis. It is still to large to load into here. 
 
 ****
