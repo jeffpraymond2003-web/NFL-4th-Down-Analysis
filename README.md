@@ -12,19 +12,16 @@ Install the data through an R package that then needs to be cleaned through the 
 
 ## Data
 **We used the NFL play-by-play data and cleaned the variables that would perfectly predict the play.**
-Add in the code with the data
+
 
 ****
 
 
 ## Repoduce
-1. Run this code chunk
-2. Run the next chunk of code
-3. anything about the 
-
-
-
-
+1. Run the football_clean.R code first
+2. Run the football_forest.R
+3. football_GLM_test.R
+4. This will get you all the code and information, and graphs we used
 
 
 ## References
