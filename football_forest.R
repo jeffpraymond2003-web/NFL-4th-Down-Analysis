@@ -20,12 +20,12 @@ rf_model <- rand_forest(mtry = tune(),
   set_engine("randomForest")
 
 # (step 2) Create a recipe
-rf_rec <- recipe(fourth_down_converted ~ ., data = train.df) #use training data set
+rf_rec <- recipe(fourth_down_converted ~ ., data = train.df)
 
 # (step 3) Create the workflow
 rf_wf <- workflow() %>%
-  add_model(rf_model) %>% #from step 1
-  add_recipe(rf_rec) #from step 2
+  add_model(rf_model) %>%
+  add_recipe(rf_rec)
 
 # (step 4) Create folds for cross validation (see previous illustration)
 set.seed(172172)
@@ -53,13 +53,21 @@ best_params <- select_best(rf_tuned, metric ="roc_auc")
 final_forest<- randomForest(fourth_down_converted ~ .,
                             data = train.df,
                             ntree = 1000, #fix B at 1000!
-                            mtry = best_params %>% pull(mtry),#chosen from the tuning
-                            importance = TRUE) #keep importance
+                            mtry = best_params %>% pull(mtry),
+                            importance = TRUE)
 
 pi_hat_forest<- predict(final_forest, test.df, type = "prob")[, "Yes"]
-rocCurve <- roc(response = test.df$fourth_down_converted,#supply truth
-                predictor = pi_hat_forest,#supply predicted PROBABILITIES)
+rocCurve <- roc(response = test.df$fourth_down_converted,
+                predictor = pi_hat_forest,
                 levels = c("No", "Yes"))
 plot(rocCurve,print.auc = TRUE, print.thres=TRUE)
 
-varImpPlot(final_forest,type=1)
+vi <- varImpPlot(final_forest,type=1) %>% as.data.frame %>% 
+  slice_max(order_by = MeanDecreaseAccuracy, n = 10)
+vi$Variable <- rownames(vi)
+
+ggplot(data = vi) +
+  geom_bar(aes(x = reorder(Variable,MeanDecreaseAccuracy), weight = MeanDecreaseAccuracy),
+           position ="identity") +
+  coord_flip() +
+  labs( x = "Variable Name",y = "Importance")

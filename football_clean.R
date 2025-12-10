@@ -39,8 +39,6 @@ fourth_sub <- fourth_clean %>% select(c(away_coach,away_score,away_team,away_tim
 rm(fourth)
 rm(fourth_clean)
 
-# CLEAN UP THIS SECTION + ADD DOCUMENTATION - COMBINE HOME/AWAY FOR POSTEAM
-
 # fourth_down_converted - factor for simplicity
 # cp - introduce complete separation
 # div_game - factor for simplicity
@@ -56,7 +54,7 @@ rm(fourth_clean)
 # start_time - hour in which the game started
 # temp - average indoor temp for indoor games
 # wind - 0 wind for indoor games
-# total_posteam_epa - total expected epa for the possention team
+# total_posteam_epa - total expected epa for the possession team
 # playcall - playtype and location
 fourth_sub <- fourth_sub %>% mutate(fourth_down_converted = factor(fourth_down_converted, levels = c('0','1'), labels = c('No','Yes'))
                                     ,cp = if_else(is.na(cp) == TRUE, 0, cp)
